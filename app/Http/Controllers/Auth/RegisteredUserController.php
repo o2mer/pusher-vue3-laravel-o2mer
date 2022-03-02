@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Events\ScoreUpdated;
 
 class RegisteredUserController extends Controller
 {
@@ -44,6 +45,8 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        event(new ScoreUpdated($user));
 
         event(new Registered($user));
 
