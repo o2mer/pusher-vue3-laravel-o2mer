@@ -8,7 +8,7 @@
         </tr>
         </thead>
         <tbody>
-            <tr :class="{success: user.id == current}"  v-for="(user, key) in sortedUsers">
+            <tr :class="{success: user.id == current}" :key="user.id"  v-for="(user, key) in sortedUsers">
             <td>{{ ++key }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.score }}</td>
@@ -16,6 +16,12 @@
         </tbody>
     </table>
 </template>
+<leaderboard>
+  v-for="(item, index) in items"
+  :item="item"
+  :index="index"
+  :key="item.id"
+></leaderboard>
 
 <script>
 import { onMounted } from "vue";

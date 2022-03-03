@@ -17,7 +17,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::middleware('auth')->name('card')
                          ->get('/cards/{card}',[CardController::class, 'show']);

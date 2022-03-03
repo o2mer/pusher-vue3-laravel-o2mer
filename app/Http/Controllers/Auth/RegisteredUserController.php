@@ -48,7 +48,6 @@ class RegisteredUserController extends Controller
 
         event(new ScoreUpdated($user));
 
-        event(new Registered($user));
 
         Auth::login($user);
 
